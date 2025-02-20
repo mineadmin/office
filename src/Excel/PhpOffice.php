@@ -185,11 +185,14 @@ class PhpOffice extends MineExcel implements ExcelPropertyInterface
         $data = [];
         foreach ($sheet->getActiveSheet()->getRowIterator(2) as $row) {
             $temp = [];
+            $propertyIndex = 0;
             foreach ($row->getCellIterator('A', $endCell) as $index => $item) {
-                $propertyIndex = ord($index) - 65;
+                //$propertyIndex = ord($index) - 65;
                 if (isset($this->property[$propertyIndex])) {
                     $temp[$this->property[$propertyIndex]['name']] = $item->getFormattedValue();
                 }
+
+                $propertyIndex ++;
             }
             if (! empty($temp)) {
                 $data[] = $temp;
