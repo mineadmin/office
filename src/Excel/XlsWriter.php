@@ -132,10 +132,10 @@ class XlsWriter extends MineExcel implements ExcelPropertyInterface
                 ->toResource()
         );
         $exportData = [];
-        foreach ($data as $item) {
+        foreach ($data as $idx => $item) {
             $yield = [];
             if ($callbackData) {
-                $item = $callbackData($item);
+                $item = $callbackData($item, $idx);
             }
             foreach ($this->property as $property) {
                 foreach ($item as $name => $value) {

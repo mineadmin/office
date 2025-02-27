@@ -117,7 +117,7 @@ class PhpOffice extends MineExcel implements ExcelPropertyInterface
                 $column = 0;
                 $items = $generate->current();
                 if ($callbackData instanceof \Closure) {
-                    $items = $callbackData($items);
+                    $items = $callbackData($items, $row - 2);
                 }
                 foreach ($items as $name => $value) {
                     $columnRow = $this->getColumnIndex($column) . $row;
